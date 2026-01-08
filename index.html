@@ -3,49 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DATCER | Ingeniería de Data Centers</title>
+    <title>DATCER | Precision Engineering</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Encode+Sans+Expanded:wght@700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              logo: ['"Swis721 Ex BT"', '"Encode Sans Expanded"', 'sans-serif'], // Primary font + Google Fallback
+              logo: ['"Swis721 Ex BT"', '"Encode Sans Expanded"', 'Inter', 'sans-serif'],
             },
             colors: {
-              ios: {
-                black: '#050505', // Slightly richer black
-                dark: '#121212', // Card background
-                gray: '#9CA3AF', // Secondary text (lighter for better contrast)
+              apple: {
+                black: '#000000',
+                gray: '#1c1c1e',
                 light: '#f5f5f7',
+                muted: '#86868b',
               },
               brand: {
-                orange: '#F26722', // RGB 242,103,34
-                grey: '#636466',   // RGB 99,100,102
-                dark: '#333333',
+                orange: '#F26722', // RGB 242, 103, 34
+                grey: '#636466',   // RGB 99, 100, 102
               }
             },
             animation: {
-              'fade-in': 'fadeIn 1s ease-out forwards',
-              'float': 'float 6s ease-in-out infinite',
-              'scroll-dot': 'scrollDot 2s ease-in-out infinite',
+              'fade-in': 'fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scroll-dot': 'scrollDot 2.5s ease-in-out infinite',
+              'blur-in': 'blurIn 1.5s ease-out forwards',
             },
             keyframes: {
               fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
               },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
+              blurIn: {
+                '0%': { opacity: '0', filter: 'blur(20px)', transform: 'scale(1.05)' },
+                '100%': { opacity: '1', filter: 'blur(0)', transform: 'scale(1)' },
               },
               scrollDot: {
-                '0%': { opacity: '0', transform: 'translateY(-4px)' },
+                '0%': { opacity: '0', transform: 'translateY(-6px)' },
                 '30%': { opacity: '1' },
                 '70%': { opacity: '1' },
-                '100%': { opacity: '0', transform: 'translateY(8px)' },
+                '100%': { opacity: '0', transform: 'translateY(10px)' },
               }
             }
           }
@@ -57,17 +56,25 @@
         background-color: #000000;
         color: #f5f5f7;
         overflow: hidden;
+        -webkit-font-smoothing: antialiased;
       }
-      .glass-panel {
-        background: rgba(20, 20, 20, 0.6);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+      .glass-card {
+        background: rgba(28, 28, 30, 0.4);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .nav-capsule {
+        background: rgba(15, 15, 15, 0.8);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
       }
-      /* Hide scrollbar */
-      ::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
+      /* Custom font classes for the logo if loaded locally */
+      .font-swis {
+        font-family: "Swis721 Ex BT", "Encode Sans Expanded", sans-serif;
+        font-style: italic;
       }
     </style>
   <script type="importmap">
@@ -83,7 +90,6 @@
 </head>
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: This script tag connects the HTML to your React code -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -4,60 +4,46 @@ import PageWrapper from '../layout/PageWrapper';
 const WhyUs: React.FC = () => {
   return (
     <PageWrapper>
-      <div className="grid lg:grid-cols-2 gap-16 items-center">
-        
-        <div className="space-y-8">
-          <h2 className="text-7xl font-bold text-white tracking-tight leading-tight">
-            Ingeniería para su <br /><span className="text-brand-orange">Inversión.</span>
-          </h2>
-          <p className="text-2xl text-ios-gray leading-relaxed max-w-xl">
-            Optimizamos el CAPEX inicial y reducimos drásticamente el OPEX mediante diseños de alta eficiencia energética y neutralidad tecnológica.
-          </p>
+      <div className="max-w-6xl mx-auto px-6 text-center lg:text-left">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
           
-          <div className="space-y-6 pt-4">
-             <div className="flex items-start gap-4">
-                <div className="mt-2 w-3 h-3 rounded-full bg-brand-orange shadow-[0_0_15px_#F26722]"></div>
-                <div>
-                  <h4 className="text-white font-bold text-xl uppercase tracking-widest">Neutralidad Tecnológica</h4>
-                  <p className="text-ios-gray text-lg">No estamos vinculados a marcas; seleccionamos lo mejor para su proyecto.</p>
-                </div>
-             </div>
-             <div className="flex items-start gap-4">
-                <div className="mt-2 w-3 h-3 rounded-full bg-brand-grey shadow-[0_0_15px_#636466]"></div>
-                <div>
-                  <h4 className="text-white font-bold text-xl uppercase tracking-widest">Garantía de Disponibilidad</h4>
-                  <p className="text-ios-gray text-lg">Diseños validados bajo los estándares más estrictos del mundo.</p>
-                </div>
-             </div>
+          <div className="lg:col-span-7">
+            <h2 className="text-5xl md:text-7xl font-semibold text-white tracking-tighter leading-tight mb-8">
+              Métricas de <br />
+              <span className="text-brand-orange">Alto Rendimiento.</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-apple-muted font-light leading-relaxed max-w-xl">
+              Optimizamos el CAPEX y reducimos el OPEX mediante ingeniería de valor enfocada en la sustentabilidad real.
+            </p>
           </div>
+
+          <div className="lg:col-span-5 grid grid-cols-1 gap-6">
+            <div className="glass-card p-10 rounded-[2rem] flex items-end justify-between hover:border-brand-orange/30 transition-all group">
+              <div>
+                <div className="text-5xl font-light text-white tracking-tighter mb-1">1.2</div>
+                <div className="text-[10px] font-bold text-apple-muted uppercase tracking-[0.3em]">PUE Target</div>
+              </div>
+              <div className="text-xs font-medium text-brand-orange tracking-widest opacity-40 group-hover:opacity-100">ENERGY</div>
+            </div>
+
+            <div className="glass-card p-10 rounded-[2rem] flex items-end justify-between hover:border-brand-orange/30 transition-all group">
+              <div>
+                <div className="text-5xl font-light text-white tracking-tighter mb-1">99.99<span className="text-2xl">%</span></div>
+                <div className="text-[10px] font-bold text-apple-muted uppercase tracking-[0.3em]">Uptime Guarantee</div>
+              </div>
+              <div className="text-xs font-medium text-white tracking-widest opacity-40 group-hover:opacity-100">TIER IV</div>
+            </div>
+
+            <div className="glass-card p-10 rounded-[2rem] flex items-end justify-between hover:border-brand-orange/30 transition-all group">
+              <div>
+                <div className="text-5xl font-light text-white tracking-tighter mb-1">ROI</div>
+                <div className="text-[10px] font-bold text-apple-muted uppercase tracking-[0.3em]">Optimized Model</div>
+              </div>
+              <div className="text-xs font-medium text-white tracking-widest opacity-40 group-hover:opacity-100">CAPEX</div>
+            </div>
+          </div>
+
         </div>
-
-        <div className="grid grid-cols-1 gap-8">
-          <div className="bg-ios-dark p-12 rounded-[3rem] border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-all duration-500">
-            <div>
-              <div className="text-7xl font-bold text-white mb-2 tracking-tighter">1.2</div>
-              <div className="text-sm text-ios-gray uppercase tracking-[0.3em] font-black">PUE Objetivo</div>
-            </div>
-            <div className="h-20 w-20 rounded-full border-4 border-brand-orange/20 flex items-center justify-center text-brand-orange font-bold">ECO</div>
-          </div>
-
-          <div className="bg-ios-dark p-12 rounded-[3rem] border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-all duration-500">
-            <div>
-              <div className="text-7xl font-bold text-white mb-2 tracking-tighter">99.99%</div>
-              <div className="text-sm text-ios-gray uppercase tracking-[0.3em] font-black">Disponibilidad</div>
-            </div>
-            <div className="h-20 w-20 rounded-full border-4 border-brand-grey/20 flex items-center justify-center text-brand-grey font-bold">TIER</div>
-          </div>
-
-          <div className="bg-ios-dark p-12 rounded-[3rem] border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-all duration-500">
-            <div>
-              <div className="text-7xl font-bold text-white mb-2 tracking-tighter leading-none">ROI</div>
-              <div className="text-sm text-ios-gray uppercase tracking-[0.3em] font-black">Optimizado</div>
-            </div>
-            <div className="h-20 w-20 rounded-full border-4 border-white/10 flex items-center justify-center text-white font-bold">$</div>
-          </div>
-        </div>
-
       </div>
     </PageWrapper>
   );
