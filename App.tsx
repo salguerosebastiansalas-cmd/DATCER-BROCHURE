@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Grid, X } from 'lucide-react';
 import Cover from './components/pages/Cover';
 import About from './components/pages/About';
 import Services from './components/pages/Services';
+import IntegratedServices from './components/pages/IntegratedServices';
 import Process from './components/pages/Process';
 import WhyUs from './components/pages/WhyUs';
 import Contact from './components/pages/Contact';
@@ -15,6 +16,7 @@ const App: React.FC = () => {
     { component: <Cover />, title: "PORTADA", subtitle: "Infraestructura Crítica" },
     { component: <About />, title: "NOSOTROS", subtitle: "Misión y Filosofía" },
     { component: <Services />, title: "SERVICIOS", subtitle: "Ingeniería de Precisión" },
+    { component: <IntegratedServices />, title: "INTEGRACIÓN", subtitle: "Servicios Complementarios" },
     { component: <Process />, title: "PROCESO", subtitle: "Metodología Operativa" },
     { component: <WhyUs />, title: "MÉTRICAS", subtitle: "Dashboard de Eficiencia" },
     { component: <Contact />, title: "CONTACTO", subtitle: "Consulta Global" },

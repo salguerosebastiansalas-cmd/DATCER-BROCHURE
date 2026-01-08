@@ -43,16 +43,16 @@ const Contact: React.FC = () => {
 
         <div className="pt-16 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-40">
            <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Bogotá</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Chía</p>
               <p className="text-xs font-light">Sede Principal</p>
            </div>
            <div className="text-center">
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">México</p>
-              <p className="text-xs font-light">Consultoría Latam</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Bogotá</p>
+              <p className="text-xs font-light">Consultoría</p>
            </div>
            <div className="text-center">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Certificación</p>
-              <p className="text-xs font-light">Uptime/ICREA</p>
+              <p className="text-xs font-light">Uptime / ICREA</p>
            </div>
            <div className="text-center">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Misión</p>
