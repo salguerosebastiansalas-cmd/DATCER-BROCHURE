@@ -7,48 +7,50 @@ const Services: React.FC = () => {
     {
       icon: FileText,
       title: "Diseño & Ingeniería",
-      desc: "Carpeta técnica de precisión para construcción de misión crítica."
+      desc: "Carpeta técnica de precisión para construcción de misión crítica bajo estándares Tier."
     },
     {
       icon: Award,
       title: "Certificaciones",
-      desc: "Gestión experta ante Uptime Institute e ICREA WCQA."
+      desc: "Gestión experta y acompañamiento ante Uptime Institute e ICREA WCQA."
     },
     {
       icon: Server,
       title: "Simulación CFD",
-      desc: "Modelado predictivo de dinámica de fluidos y gestión térmica."
+      desc: "Modelado predictivo de dinámica de fluidos para optimización térmica avanzada."
     },
     {
       icon: Activity,
       title: "Commissioning",
-      desc: "Protocolos de validación integral (FAT/SAT/IST) bajo falla."
+      desc: "Protocolos de validación integral (FAT/SAT/IST) simulando escenarios extremos."
     }
   ];
 
   return (
     <PageWrapper>
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="mb-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="mb-16">
           <h2 className="text-4xl md:text-6xl font-semibold tracking-tight text-white mb-6">
             Servicios <span className="text-apple-muted font-light">Especializados.</span>
           </h2>
           <div className="h-[1px] w-24 bg-brand-orange"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10 overflow-hidden rounded-[2.5rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {services.map((s, i) => (
             <div 
               key={i}
-              className="bg-apple-black p-10 md:p-14 hover:bg-white/[0.02] transition-colors group"
+              className="glass-card p-10 md:p-12 rounded-[2.5rem] hover:bg-white/[0.05] transition-all group relative overflow-hidden"
             >
               <div className="mb-8 text-brand-orange opacity-80 group-hover:opacity-100 transition-opacity">
-                <s.icon size={32} strokeWidth={1} />
+                <s.icon size={28} strokeWidth={1.5} />
               </div>
               <h3 className="text-2xl font-medium text-white mb-4 tracking-tight">{s.title}</h3>
-              <p className="text-apple-muted text-lg leading-relaxed max-w-sm">
+              <p className="text-apple-muted text-base leading-relaxed font-light max-w-sm">
                 {s.desc}
               </p>
+              {/* Accento visual sutil */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand-orange/[0.02] blur-2xl rounded-full"></div>
             </div>
           ))}
         </div>
