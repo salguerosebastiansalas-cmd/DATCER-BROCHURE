@@ -7,60 +7,61 @@ const Services: React.FC = () => {
     {
       icon: FileText,
       title: "Diseño & Ingeniería",
-      desc: "Carpeta técnica completa para construcción.",
-      details: ["Planos Eléctricos", "White Space"]
+      desc: "Desarrollo completo de la carpeta técnica para construcción.",
+      details: ["Planos Eléctricos y Mecánicos", "Cálculos térmicos", "White Space Design"]
     },
     {
       icon: Award,
       title: "Certificaciones",
-      desc: "Acompañamiento Tier e ICREA.",
-      details: ["Gap Analysis", "Gestión Uptime"]
+      desc: "Acompañamiento estratégico para sellos internacionales.",
+      details: ["Gap Analysis Tier/ICREA", "Gestión Uptime Institute", "Defensa de diseño"]
     },
     {
       icon: Server,
       title: "Simulación CFD",
-      desc: "Predicción térmica avanzada por software.",
-      details: ["Dinámica Fluidos", "Optimización PUE"]
+      desc: "Software avanzado para predecir el comportamiento térmico.",
+      details: ["Dinámica de Fluidos", "Análisis de Calidad Energía", "Optimización PUE"]
     },
     {
       icon: Activity,
       title: "Commissioning",
-      desc: "Pruebas de calidad y estrés (IST).",
-      details: ["Validación Falla", "Capacitación"]
+      desc: "Aseguramiento de calidad antes de la operación crítica.",
+      details: ["Pruebas FAT / SAT", "Pruebas integrales IST", "Capacitación Operativa"]
     }
   ];
 
   return (
     <PageWrapper>
-      <div className="mb-4 md:mb-10 text-center md:text-left">
-        <h2 className="text-2xl md:text-5xl font-bold text-white tracking-tight">Soluciones Técnicas.</h2>
-        <p className="text-ios-gray text-xs md:text-xl mt-1 md:mt-4 uppercase tracking-widest font-medium">Entregables de Ingeniería</p>
+      <div className="mb-6 md:mb-10 text-center md:text-left px-2">
+        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Soluciones Técnicas.</h2>
+        <p className="text-ios-gray text-base md:text-xl mt-2 md:mt-4">Entregables tangibles para la toma de decisiones.</p>
       </div>
 
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-2 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 px-2">
         {services.map((s, i) => (
           <div 
             key={i}
-            className="group bg-ios-dark rounded-xl md:rounded-3xl p-4 md:p-8 border border-white/5 hover:border-brand-orange/20 transition-all duration-300 flex flex-col"
+            className="group bg-ios-dark rounded-2xl md:rounded-3xl p-5 md:p-8 border border-white/5 hover:border-brand-orange/20 transition-all duration-300 flex flex-col"
           >
-            <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-6">
-              <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-white/5 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
-                <s.icon size={16} className="md:w-6 md:h-6" strokeWidth={2} />
+            <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/5 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
+                <s.icon size={20} className="md:w-6 md:h-6" strokeWidth={1.5} />
               </div>
-              <h3 className="text-sm md:text-xl font-bold text-white">{s.title}</h3>
+              <h3 className="text-lg md:text-xl font-bold text-white">{s.title}</h3>
             </div>
             
-            <p className="text-white/70 text-[10px] md:text-base leading-snug mb-2 md:mb-4">
+            <p className="text-white/80 text-sm md:text-base leading-relaxed mb-4 font-medium">
               {s.desc}
             </p>
 
-            <div className="flex flex-wrap gap-1.5 mt-auto">
+            <ul className="space-y-1.5 md:space-y-2 mt-auto">
               {s.details.map((detail, idx) => (
-                <span key={idx} className="text-[8px] md:text-xs px-2 py-0.5 rounded bg-white/5 text-ios-gray border border-white/5">
+                <li key={idx} className="flex items-start gap-2 text-xs md:text-sm text-ios-gray">
+                  <span className="mt-1.5 w-1 h-1 rounded-full bg-brand-orange shrink-0"></span>
                   {detail}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         ))}
       </div>

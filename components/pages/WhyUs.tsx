@@ -4,62 +4,65 @@ import PageWrapper from '../layout/PageWrapper';
 const WhyUs: React.FC = () => {
   return (
     <PageWrapper>
-      <div className="grid lg:grid-cols-2 gap-4 md:gap-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center px-2">
         
         <div className="text-center lg:text-left">
-          <h2 className="text-2xl md:text-6xl font-bold text-white tracking-tight mb-3 md:mb-6 leading-none">
+          <h2 className="text-3xl md:text-6xl font-bold text-white tracking-tight mb-4 md:mb-6">
             Ingeniería para su <br /><span className="text-brand-orange">Inversión.</span>
           </h2>
-          <p className="text-xs md:text-xl text-ios-gray leading-relaxed max-w-md mx-auto lg:mx-0 mb-4 md:mb-8">
+          <p className="text-base md:text-xl text-ios-gray leading-relaxed max-w-md mx-auto lg:mx-0 mb-6 md:mb-8">
             Optimizamos el CAPEX inicial y reducimos drásticamente el OPEX a largo plazo.
           </p>
           
-          <div className="grid grid-cols-2 gap-2 text-left sm:block sm:space-y-4">
-             <div className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
+          <div className="space-y-4 text-left inline-block lg:block">
+             <div className="flex items-start gap-3">
+                <div className="mt-1 w-2 h-2 rounded-full bg-brand-orange shadow-[0_0_10px_#F26722]"></div>
                 <div>
-                  <h4 className="text-white font-bold text-[9px] md:text-base leading-none">Neutralidad</h4>
-                  <p className="text-[8px] md:text-sm text-gray-500 hidden sm:block">Sin compromiso con marcas.</p>
+                  <h4 className="text-white font-medium text-sm md:text-base">Neutralidad Tecnológica</h4>
+                  <p className="text-[11px] md:text-sm text-gray-500">No estamos casados con marcas de hardware.</p>
                 </div>
              </div>
-             <div className="flex items-start gap-2">
-                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-brand-grey shrink-0"></div>
+             <div className="flex items-start gap-3">
+                <div className="mt-1 w-2 h-2 rounded-full bg-brand-grey shadow-[0_0_10px_#636466]"></div>
                 <div>
-                  <h4 className="text-white font-bold text-[9px] md:text-base leading-none">Normativa</h4>
-                  <p className="text-[8px] md:text-sm text-gray-500 hidden sm:block">Garantía internacional.</p>
+                  <h4 className="text-white font-medium text-sm md:text-base">Cumplimiento Normativo</h4>
+                  <p className="text-[11px] md:text-sm text-gray-500">Garantía de estándares internacionales.</p>
                 </div>
              </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 lg:grid-cols-1 gap-2 md:gap-6">
-          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+        <div className="grid grid-cols-1 gap-3 md:gap-6">
+          {/* Card 1 */}
+          <div className="bg-ios-dark p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
             <div>
-              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">1.2</div>
-              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">PUE</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-1 tracking-tighter">1.2</div>
+              <div className="text-[10px] md:text-xs text-ios-gray uppercase tracking-widest font-semibold">PUE Objetivo</div>
             </div>
-            <div className="hidden md:flex h-12 w-12 rounded-full border border-green-500/20 items-center justify-center">
-               <span className="text-green-500 text-[9px] font-bold">ECO</span>
+            <div className="h-12 w-12 md:h-16 md:w-16 rounded-full border-2 md:border-4 border-green-500/20 flex items-center justify-center">
+               <span className="text-green-500 text-[10px] md:text-xs font-bold">ECO</span>
             </div>
           </div>
 
-          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+          {/* Card 2 */}
+          <div className="bg-ios-dark p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
             <div>
-              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">99.9%</div>
-              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">Uptime</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-1 tracking-tighter">99.99%</div>
+              <div className="text-[10px] md:text-xs text-ios-gray uppercase tracking-widest font-semibold">Disponibilidad</div>
             </div>
-             <div className="hidden md:flex h-12 w-12 rounded-full border border-brand-orange/20 items-center justify-center">
-               <span className="text-brand-orange text-[9px] font-bold">UP</span>
+             <div className="h-12 w-12 md:h-16 md:w-16 rounded-full border-2 md:border-4 border-brand-orange/20 flex items-center justify-center">
+               <span className="text-brand-orange text-[10px] md:text-xs font-bold">UP</span>
             </div>
           </div>
 
-          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+          {/* Card 3 */}
+          <div className="bg-ios-dark p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
             <div>
-              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">ROI</div>
-              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">Max</div>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-1 tracking-tighter">ROI</div>
+              <div className="text-[10px] md:text-xs text-ios-gray uppercase tracking-widest font-semibold">Optimizado</div>
             </div>
-             <div className="hidden md:flex h-12 w-12 rounded-full border border-white/20 items-center justify-center">
-               <span className="text-white text-[9px] font-bold">$</span>
+             <div className="h-12 w-12 md:h-16 md:w-16 rounded-full border-2 md:border-4 border-white/20 flex items-center justify-center">
+               <span className="text-white text-[10px] md:text-xs font-bold">$</span>
             </div>
           </div>
         </div>

@@ -12,12 +12,12 @@ const App: React.FC = () => {
   const [showOverview, setShowOverview] = useState(false);
   
   const pages = [
-    { component: <Cover />, title: "Portada" },
-    { component: <About />, title: "Nosotros" },
-    { component: <Services />, title: "Servicios" },
-    { component: <Process />, title: "Proceso" },
-    { component: <WhyUs />, title: "Valor" },
-    { component: <Contact />, title: "Contacto" },
+    { component: <Cover />, title: "Portada", subtitle: "Inicio" },
+    { component: <About />, title: "Nosotros", subtitle: "Propuesta" },
+    { component: <Services />, title: "Servicios", subtitle: "Ingeniería" },
+    { component: <Process />, title: "Proceso", subtitle: "Workflow" },
+    { component: <WhyUs />, title: "Por Qué", subtitle: "Valor" },
+    { component: <Contact />, title: "Contacto", subtitle: "Hablemos" },
   ];
 
   const totalPages = pages.length;
@@ -56,18 +56,18 @@ const App: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
+    <div className="relative h-screen w-screen overflow-hidden bg-ios-black text-white font-sans selection:bg-brand-orange selection:text-white">
       
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-brand-orange/10 blur-[100px]"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-brand-grey/10 blur-[100px]"></div>
+      {/* Ambient Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-50%] left-[-20%] w-[80%] h-[80%] rounded-full bg-brand-orange/10 blur-[120px]"></div>
+        <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[80%] rounded-full bg-gray-800/20 blur-[120px]"></div>
       </div>
 
-      {/* Main Content Slider */}
+      {/* Main Slider */}
       <main className="h-full w-full relative z-10">
         <div 
-          className="flex h-full transition-transform duration-700 cubic-bezier(0.2, 0, 0, 1)"
+          className="flex h-full transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)"
           style={{ 
             width: `${totalPages * 100}%`,
             transform: `translateX(-${(currentPage * 100) / totalPages}%)` 
@@ -79,7 +79,7 @@ const App: React.FC = () => {
               className="w-full h-full relative flex-shrink-0 flex items-center justify-center overflow-hidden"
               style={{ width: `${100 / totalPages}%` }}
             >
-               <div className={`w-full h-full transition-all duration-700 ${currentPage === index ? 'opacity-100 scale-100' : 'opacity-20 scale-95 grayscale blur-sm'}`}>
+               <div className={`w-full h-full transition-all duration-1000 delay-100 ${currentPage === index ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-95 blur-md grayscale'}`}>
                  {page.component}
                </div>
             </section>
@@ -87,61 +87,98 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Simplified Mobile/Desktop Control Bar */}
-      <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[400px]">
-        <div className="glass-panel rounded-full px-3 py-1.5 flex items-center justify-between shadow-2xl">
-          
-          <div className="flex items-center gap-2 pl-2">
-            <span className="text-[10px] md:text-xs text-brand-orange font-bold uppercase tracking-widest truncate max-w-[70px]">
-              {pages[currentPage].title}
+      {/* Scroll Hint - Adjusted for mobile position */}
+      <div 
+        className={`fixed bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 transition-all duration-700 pointer-events-none ${
+          currentPage === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <div className="animate-float flex flex-col items-center">
+            <div className="w-5 h-8 md:w-6 md:h-10 rounded-full border border-white/20 flex justify-center pt-2 bg-black/20 backdrop-blur-sm">
+                <div className="w-0.5 h-1.5 md:w-1 md:h-2 bg-brand-orange rounded-full animate-bounce"></div>
+            </div>
+            <span className="text-[8px] md:text-[10px] text-white/50 uppercase tracking-[0.2em] mt-2 font-medium">
+                Scroll / Swipe
             </span>
+        </div>
+      </div>
+
+      {/* Control Capsule - More compact on mobile */}
+      <div className="fixed bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-auto max-w-[400px]">
+        <div className="glass-panel rounded-full px-2 py-1.5 md:py-2 flex items-center justify-between md:gap-4 shadow-2xl transition-all duration-300">
+          
+          {/* Brand Name (Hidden on very small screens to save space) */}
+          <div className="hidden sm:flex items-center gap-2 pl-4 pr-2 border-r border-white/10">
+            <div className="font-bold text-xs md:text-sm font-logo uppercase italic">
+              <span className="text-brand-orange">DAT</span>
+              <span className="text-brand-grey">CER</span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-0.5">
+          {/* Current Page Text */}
+          <div className="flex-1 md:flex-none text-center md:text-left px-4">
+             <span className="text-[10px] md:text-xs text-ios-gray uppercase tracking-widest block md:inline font-bold">
+               {pages[currentPage].title}
+             </span>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center gap-1">
             <button 
               onClick={() => navigate('prev')}
               disabled={currentPage === 0}
-              className="p-2 rounded-full hover:bg-white/10 disabled:opacity-5 transition-all"
+              className="p-2 md:p-2.5 rounded-full hover:bg-white/10 disabled:opacity-10 transition-all active:scale-90"
+              aria-label="Anterior"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={18} />
             </button>
             
-            <div className="text-[10px] font-mono text-ios-gray w-8 text-center">
+            <div className="text-[10px] md:text-xs font-mono text-ios-gray w-8 md:w-10 text-center">
               {currentPage + 1}
             </div>
 
             <button 
               onClick={() => navigate('next')}
               disabled={currentPage === totalPages - 1}
-              className="p-2 rounded-full hover:bg-white/10 disabled:opacity-5 transition-all"
+              className="p-2 md:p-2.5 rounded-full hover:bg-white/10 disabled:opacity-10 transition-all active:scale-90"
+              aria-label="Siguiente"
             >
-              <ChevronRight size={16} />
+              <ChevronRight size={18} />
             </button>
 
             <button 
               onClick={() => setShowOverview(true)}
-              className="p-2 rounded-full bg-white/5 hover:bg-white/15 ml-1 transition-all"
+              className="p-2 md:p-2.5 rounded-full bg-white/5 hover:bg-white/15 text-white transition-all active:scale-90 ml-1"
+              aria-label="Vista general"
             >
-              <Grid size={16} />
+              <Grid size={18} />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Overview Modal */}
+      {/* Progress Bar (Orange) */}
+      <div className="fixed top-0 left-0 h-[2px] w-full z-50 bg-white/5">
+        <div 
+          className="h-full bg-brand-orange transition-all duration-1000 ease-out"
+          style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
+        ></div>
+      </div>
+
+      {/* Overview Grid */}
       <div 
-        className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col items-center justify-center ${
+        className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl transition-all duration-500 flex flex-col items-center justify-center ${
           showOverview ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
         <button 
           onClick={() => setShowOverview(false)}
-          className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20"
+          className="absolute top-6 right-6 md:top-8 md:right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-[70]"
         >
-          <X size={20} />
+          <X size={24} />
         </button>
 
-        <div className="grid grid-cols-2 gap-3 max-w-sm w-full px-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 max-w-4xl w-full px-6 overflow-y-auto max-h-[80vh] py-10">
           {pages.map((page, index) => (
             <button
               key={index}
@@ -149,16 +186,18 @@ const App: React.FC = () => {
                 setCurrentPage(index);
                 setShowOverview(false);
               }}
-              className={`text-center p-3 rounded-xl border transition-all ${
+              className={`group text-left p-4 md:p-6 rounded-2xl border transition-all duration-300 ${
                 currentPage === index 
                   ? 'bg-ios-dark border-brand-orange' 
-                  : 'bg-ios-dark/40 border-white/5'
+                  : 'bg-ios-dark/50 border-white/5 hover:border-white/20'
               }`}
             >
-              <span className={`text-[8px] font-bold block mb-1 uppercase ${currentPage === index ? 'text-brand-orange' : 'text-ios-gray'}`}>
-                0{index + 1}
+              <span className={`text-[10px] font-bold mb-1 block ${currentPage === index ? 'text-brand-orange' : 'text-ios-gray'}`}>
+                PAGINA 0{index + 1}
               </span>
-              <h3 className="text-xs font-bold text-white">{page.title}</h3>
+              <h3 className={`text-sm md:text-xl font-bold ${currentPage === index ? 'text-white' : 'text-white/70'}`}>
+                {page.title}
+              </h3>
             </button>
           ))}
         </div>
