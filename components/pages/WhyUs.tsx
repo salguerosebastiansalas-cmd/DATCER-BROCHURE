@@ -4,70 +4,62 @@ import PageWrapper from '../layout/PageWrapper';
 const WhyUs: React.FC = () => {
   return (
     <PageWrapper>
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-4 md:gap-12 items-center">
         
-        <div>
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6">
-            Ingeniería que protege su <br /><span className="text-brand-orange">Inversión.</span>
+        <div className="text-center lg:text-left">
+          <h2 className="text-2xl md:text-6xl font-bold text-white tracking-tight mb-3 md:mb-6 leading-none">
+            Ingeniería para su <br /><span className="text-brand-orange">Inversión.</span>
           </h2>
-          <p className="text-xl text-ios-gray leading-relaxed max-w-md mb-8">
-            Un Data Center mal diseñado es un costo operativo eterno. Nosotros optimizamos CAPEX inicial y reducimos el OPEX a largo plazo.
+          <p className="text-xs md:text-xl text-ios-gray leading-relaxed max-w-md mx-auto lg:mx-0 mb-4 md:mb-8">
+            Optimizamos el CAPEX inicial y reducimos drásticamente el OPEX a largo plazo.
           </p>
           
-          <div className="space-y-4">
-             <div className="flex items-start gap-3">
-                {/* Updated shadow color to #F26722 */}
-                <div className="mt-1 w-2 h-2 rounded-full bg-brand-orange shadow-[0_0_10px_#F26722]"></div>
+          <div className="grid grid-cols-2 gap-2 text-left sm:block sm:space-y-4">
+             <div className="flex items-start gap-2">
+                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-brand-orange shrink-0"></div>
                 <div>
-                  <h4 className="text-white font-medium">Neutralidad Tecnológica</h4>
-                  <p className="text-sm text-gray-500">Diseñamos la mejor solución, no estamos casados con marcas de hardware.</p>
+                  <h4 className="text-white font-bold text-[9px] md:text-base leading-none">Neutralidad</h4>
+                  <p className="text-[8px] md:text-sm text-gray-500 hidden sm:block">Sin compromiso con marcas.</p>
                 </div>
              </div>
-             <div className="flex items-start gap-3">
-                {/* Updated shadow color to #636466 */}
-                <div className="mt-1 w-2 h-2 rounded-full bg-brand-grey shadow-[0_0_10px_#636466]"></div>
+             <div className="flex items-start gap-2">
+                <div className="mt-1 w-1.5 h-1.5 rounded-full bg-brand-grey shrink-0"></div>
                 <div>
-                  <h4 className="text-white font-medium">Cumplimiento Normativo</h4>
-                  <p className="text-sm text-gray-500">Garantía de cumplimiento con estándares internacionales.</p>
+                  <h4 className="text-white font-bold text-[9px] md:text-base leading-none">Normativa</h4>
+                  <p className="text-[8px] md:text-sm text-gray-500 hidden sm:block">Garantía internacional.</p>
                 </div>
              </div>
           </div>
         </div>
 
-        <div className="grid gap-6">
-          {/* Card 1 */}
-          <div className="bg-ios-dark p-8 rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
+        <div className="grid grid-cols-3 lg:grid-cols-1 gap-2 md:gap-6">
+          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div>
-              <div className="text-5xl font-bold text-white mb-2 tracking-tighter">1.2</div>
-              <div className="text-xs text-ios-gray uppercase tracking-widest font-semibold">PUE Objetivo</div>
-              <div className="text-xs text-gray-600 mt-1">Eficiencia Energética Alta</div>
+              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">1.2</div>
+              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">PUE</div>
             </div>
-            <div className="h-16 w-16 rounded-full border-4 border-green-500/20 flex items-center justify-center">
-               <span className="text-green-500 text-xs font-bold">ECO</span>
+            <div className="hidden md:flex h-12 w-12 rounded-full border border-green-500/20 items-center justify-center">
+               <span className="text-green-500 text-[9px] font-bold">ECO</span>
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="bg-ios-dark p-8 rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
+          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div>
-              <div className="text-5xl font-bold text-white mb-2 tracking-tighter">99.99%</div>
-              <div className="text-xs text-ios-gray uppercase tracking-widest font-semibold">Disponibilidad</div>
-              <div className="text-xs text-gray-600 mt-1">Diseños Tier III / IV</div>
+              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">99.9%</div>
+              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">Uptime</div>
             </div>
-             <div className="h-16 w-16 rounded-full border-4 border-brand-orange/20 flex items-center justify-center">
-               <span className="text-brand-orange text-xs font-bold">UP</span>
+             <div className="hidden md:flex h-12 w-12 rounded-full border border-brand-orange/20 items-center justify-center">
+               <span className="text-brand-orange text-[9px] font-bold">UP</span>
             </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="bg-ios-dark p-8 rounded-3xl border border-white/5 flex items-center justify-between group hover:border-brand-orange/30 transition-colors">
+          <div className="bg-ios-dark p-3 md:p-8 rounded-xl md:rounded-3xl border border-white/5 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
             <div>
-              <div className="text-5xl font-bold text-white mb-2 tracking-tighter">ROI</div>
-              <div className="text-xs text-ios-gray uppercase tracking-widest font-semibold">Optimizado</div>
-              <div className="text-xs text-gray-600 mt-1">Menor costo por kW IT</div>
+              <div className="text-xl md:text-5xl font-bold text-white mb-0 md:mb-1 tracking-tighter">ROI</div>
+              <div className="text-[8px] md:text-xs text-ios-gray uppercase font-semibold">Max</div>
             </div>
-             <div className="h-16 w-16 rounded-full border-4 border-white/20 flex items-center justify-center">
-               <span className="text-white text-xs font-bold">$</span>
+             <div className="hidden md:flex h-12 w-12 rounded-full border border-white/20 items-center justify-center">
+               <span className="text-white text-[9px] font-bold">$</span>
             </div>
           </div>
         </div>

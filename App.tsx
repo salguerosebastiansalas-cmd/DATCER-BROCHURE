@@ -12,12 +12,12 @@ const App: React.FC = () => {
   const [showOverview, setShowOverview] = useState(false);
   
   const pages = [
-    { component: <Cover />, title: "Portada", subtitle: "Inicio" },
-    { component: <About />, title: "Nosotros", subtitle: "Propuesta de Valor" },
-    { component: <Services />, title: "Servicios", subtitle: "Ingeniería" },
-    { component: <Process />, title: "Proceso", subtitle: "Workflow" },
-    { component: <WhyUs />, title: "Por Qué Elegirnos", subtitle: "Diferenciales" },
-    { component: <Contact />, title: "Contacto", subtitle: "Hablemos" },
+    { component: <Cover />, title: "Portada" },
+    { component: <About />, title: "Nosotros" },
+    { component: <Services />, title: "Servicios" },
+    { component: <Process />, title: "Proceso" },
+    { component: <WhyUs />, title: "Valor" },
+    { component: <Contact />, title: "Contacto" },
   ];
 
   const totalPages = pages.length;
@@ -56,18 +56,18 @@ const App: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-ios-black text-white font-sans selection:bg-brand-orange selection:text-white">
+    <div className="relative h-screen w-screen overflow-hidden bg-black text-white font-sans">
       
-      {/* Ambient Background - Updated to DATCER Orange/Warm tones */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-50%] left-[-20%] w-[80%] h-[80%] rounded-full bg-brand-orange/10 blur-[120px]"></div>
-        <div className="absolute bottom-[-50%] right-[-20%] w-[80%] h-[80%] rounded-full bg-gray-800/20 blur-[120px]"></div>
+      {/* Background Decor */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-brand-orange/10 blur-[100px]"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-brand-grey/10 blur-[100px]"></div>
       </div>
 
-      {/* Main Slider */}
+      {/* Main Content Slider */}
       <main className="h-full w-full relative z-10">
         <div 
-          className="flex h-full transition-transform duration-1000 cubic-bezier(0.16, 1, 0.3, 1)"
+          className="flex h-full transition-transform duration-700 cubic-bezier(0.2, 0, 0, 1)"
           style={{ 
             width: `${totalPages * 100}%`,
             transform: `translateX(-${(currentPage * 100) / totalPages}%)` 
@@ -79,7 +79,7 @@ const App: React.FC = () => {
               className="w-full h-full relative flex-shrink-0 flex items-center justify-center overflow-hidden"
               style={{ width: `${100 / totalPages}%` }}
             >
-               <div className={`w-full h-full transition-all duration-1000 delay-100 ${currentPage === index ? 'opacity-100 scale-100 blur-0' : 'opacity-40 scale-95 blur-md grayscale'}`}>
+               <div className={`w-full h-full transition-all duration-700 ${currentPage === index ? 'opacity-100 scale-100' : 'opacity-20 scale-95 grayscale blur-sm'}`}>
                  {page.component}
                </div>
             </section>
@@ -87,94 +87,61 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* Scroll Hint Animation - Visible mainly on first page, fades out on others */}
-      <div 
-        className={`fixed bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 transition-all duration-700 pointer-events-none ${
-          currentPage === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-        }`}
-      >
-        <div className="animate-float flex flex-col items-center">
-            {/* Mouse Body */}
-            <div className="w-6 h-10 rounded-full border border-white/20 flex justify-center pt-2 bg-black/20 backdrop-blur-sm shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-                {/* Scrolling Wheel */}
-                <div className="w-1 h-2 bg-brand-orange rounded-full animate-bounce"></div>
-            </div>
-            {/* Text */}
-            <span className="text-[10px] text-white/50 uppercase tracking-widest mt-2 font-medium">
-                Scroll / Desliza
-            </span>
-        </div>
-      </div>
-
-      {/* Control Capsule */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-        <div className="glass-panel rounded-full px-2 py-2 flex items-center gap-4 shadow-2xl shadow-black/50 transition-all duration-300 hover:scale-[1.02]">
+      {/* Simplified Mobile/Desktop Control Bar */}
+      <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[400px]">
+        <div className="glass-panel rounded-full px-3 py-1.5 flex items-center justify-between shadow-2xl">
           
-          {/* Brand */}
-          <div className="hidden md:flex items-center gap-2 pl-4 pr-2">
-            <div className="font-bold text-sm font-logo uppercase italic">
-              <span className="text-brand-orange">DAT</span>
-              <span className="text-brand-grey">CER</span>
-            </div>
-            <span className="text-ios-gray text-xs">|</span>
-            <span className="text-xs text-ios-gray max-w-[120px] truncate">{pages[currentPage].title}</span>
+          <div className="flex items-center gap-2 pl-2">
+            <span className="text-[10px] md:text-xs text-brand-orange font-bold uppercase tracking-widest truncate max-w-[70px]">
+              {pages[currentPage].title}
+            </span>
           </div>
 
-          {/* Navigation */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-0.5">
             <button 
               onClick={() => navigate('prev')}
               disabled={currentPage === 0}
-              className="p-2.5 rounded-full hover:bg-white/10 disabled:opacity-20 transition-all active:scale-90"
+              className="p-2 rounded-full hover:bg-white/10 disabled:opacity-5 transition-all"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={16} />
             </button>
             
-            <div className="text-xs font-mono text-ios-gray w-12 text-center">
-              {currentPage + 1} / {totalPages}
+            <div className="text-[10px] font-mono text-ios-gray w-8 text-center">
+              {currentPage + 1}
             </div>
 
             <button 
               onClick={() => navigate('next')}
               disabled={currentPage === totalPages - 1}
-              className="p-2.5 rounded-full hover:bg-white/10 disabled:opacity-20 transition-all active:scale-90"
+              className="p-2 rounded-full hover:bg-white/10 disabled:opacity-5 transition-all"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={16} />
+            </button>
+
+            <button 
+              onClick={() => setShowOverview(true)}
+              className="p-2 rounded-full bg-white/5 hover:bg-white/15 ml-1 transition-all"
+            >
+              <Grid size={16} />
             </button>
           </div>
-
-          {/* Grid View */}
-          <button 
-            onClick={() => setShowOverview(true)}
-            className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all active:scale-90 ml-2"
-          >
-            <Grid size={18} />
-          </button>
         </div>
       </div>
 
-      {/* Progress Bar (Orange) */}
-      <div className="fixed top-0 left-0 h-[2px] w-full z-50 bg-white/5">
-        <div 
-          className="h-full bg-brand-orange transition-all duration-1000 ease-out"
-          style={{ width: `${((currentPage + 1) / totalPages) * 100}%` }}
-        ></div>
-      </div>
-
-      {/* Overview */}
+      {/* Overview Modal */}
       <div 
-        className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-2xl transition-opacity duration-500 flex flex-col items-center justify-center ${
-          showOverview ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl transition-all duration-300 flex flex-col items-center justify-center ${
+          showOverview ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
       >
         <button 
           onClick={() => setShowOverview(false)}
-          className="absolute top-8 right-8 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-full bg-white/10 hover:bg-white/20"
         >
-          <X size={24} />
+          <X size={20} />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full px-8">
+        <div className="grid grid-cols-2 gap-3 max-w-sm w-full px-6">
           {pages.map((page, index) => (
             <button
               key={index}
@@ -182,21 +149,16 @@ const App: React.FC = () => {
                 setCurrentPage(index);
                 setShowOverview(false);
               }}
-              className={`group text-left p-6 rounded-3xl border transition-all duration-300 hover:scale-[1.02] ${
+              className={`text-center p-3 rounded-xl border transition-all ${
                 currentPage === index 
-                  ? 'bg-ios-dark border-brand-orange ring-1 ring-brand-orange' 
-                  : 'bg-ios-dark/50 border-white/5 hover:bg-ios-dark hover:border-white/10'
+                  ? 'bg-ios-dark border-brand-orange' 
+                  : 'bg-ios-dark/40 border-white/5'
               }`}
             >
-              <span className="text-xs font-semibold text-ios-gray uppercase tracking-widest mb-2 block">
+              <span className={`text-[8px] font-bold block mb-1 uppercase ${currentPage === index ? 'text-brand-orange' : 'text-ios-gray'}`}>
                 0{index + 1}
               </span>
-              <h3 className={`text-2xl font-semibold mb-1 ${currentPage === index ? 'text-white' : 'text-white/80'}`}>
-                {page.title}
-              </h3>
-              <p className="text-sm text-ios-gray">
-                {page.subtitle}
-              </p>
+              <h3 className="text-xs font-bold text-white">{page.title}</h3>
             </button>
           ))}
         </div>

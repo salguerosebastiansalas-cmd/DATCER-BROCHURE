@@ -6,62 +6,61 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: FileText,
-      title: "Diseño & Ingeniería de Detalle",
-      desc: "Desarrollo completo de la carpeta técnica para construcción (Blueprints).",
-      details: ["Planos Eléctricos, Mecánicos y BMS", "Cálculos de carga térmica", "Distribución de Racks (White Space)", "Especificación de generadores y UPS"]
+      title: "Diseño & Ingeniería",
+      desc: "Carpeta técnica completa para construcción.",
+      details: ["Planos Eléctricos", "White Space"]
     },
     {
       icon: Award,
-      title: "Certificaciones (Tier/ICREA)",
-      desc: "Acompañamiento estratégico para obtener sellos de calidad internacional.",
-      details: ["Gap Analysis (Diagnóstico previo)", "Gestión ante Uptime Institute", "Defensa del diseño ante certificadores", "Validación de construcción"]
+      title: "Certificaciones",
+      desc: "Acompañamiento Tier e ICREA.",
+      details: ["Gap Analysis", "Gestión Uptime"]
     },
     {
       icon: Server,
-      title: "Simulación & Optimización",
-      desc: "Uso de software avanzado para predecir el comportamiento del Data Center.",
-      details: ["Estudios CFD (Dinámica de Fluidos)", "Análisis de Calidad de Energía", "Optimización de PUE", "Planificación de Capacidad"]
+      title: "Simulación CFD",
+      desc: "Predicción térmica avanzada por software.",
+      details: ["Dinámica Fluidos", "Optimización PUE"]
     },
     {
       icon: Activity,
-      title: "Commissioning (Cx)",
-      desc: "Proceso de aseguramiento de calidad antes de encender los servidores.",
-      details: ["Pruebas de fábrica (FAT)", "Pruebas en sitio (SAT)", "Pruebas integrales (IST)", "Capacitación a operadores"]
+      title: "Commissioning",
+      desc: "Pruebas de calidad y estrés (IST).",
+      details: ["Validación Falla", "Capacitación"]
     }
   ];
 
   return (
     <PageWrapper>
-      <div className="mb-10 text-center md:text-left">
-        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Soluciones Técnicas.</h2>
-        <p className="text-ios-gray text-xl mt-4">Entregables tangibles para la toma de decisiones críticas.</p>
+      <div className="mb-4 md:mb-10 text-center md:text-left">
+        <h2 className="text-2xl md:text-5xl font-bold text-white tracking-tight">Soluciones Técnicas.</h2>
+        <p className="text-ios-gray text-xs md:text-xl mt-1 md:mt-4 uppercase tracking-widest font-medium">Entregables de Ingeniería</p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-2 md:gap-6">
         {services.map((s, i) => (
           <div 
             key={i}
-            className="group bg-ios-dark rounded-3xl p-8 border border-white/5 hover:border-brand-orange/20 hover:bg-white/5 transition-all duration-300 flex flex-col"
+            className="group bg-ios-dark rounded-xl md:rounded-3xl p-4 md:p-8 border border-white/5 hover:border-brand-orange/20 transition-all duration-300 flex flex-col"
           >
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
-                <s.icon size={24} strokeWidth={1.5} />
+            <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-6">
+              <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-white/5 flex items-center justify-center text-white group-hover:bg-brand-orange transition-colors">
+                <s.icon size={16} className="md:w-6 md:h-6" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-white">{s.title}</h3>
+              <h3 className="text-sm md:text-xl font-bold text-white">{s.title}</h3>
             </div>
             
-            <p className="text-white/80 leading-relaxed mb-6 font-medium">
+            <p className="text-white/70 text-[10px] md:text-base leading-snug mb-2 md:mb-4">
               {s.desc}
             </p>
 
-            <ul className="space-y-2 mt-auto">
+            <div className="flex flex-wrap gap-1.5 mt-auto">
               {s.details.map((detail, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-ios-gray">
-                  <span className="mt-1.5 w-1 h-1 rounded-full bg-brand-orange shrink-0"></span>
+                <span key={idx} className="text-[8px] md:text-xs px-2 py-0.5 rounded bg-white/5 text-ios-gray border border-white/5">
                   {detail}
-                </li>
+                </span>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>

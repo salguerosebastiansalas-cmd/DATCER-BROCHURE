@@ -7,7 +7,7 @@ interface PageWrapperProps {
 
 const PageWrapper: React.FC<PageWrapperProps> = ({ children, className = "" }) => {
   return (
-    <div className={`w-full h-full max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col justify-center ${className}`}>
+    <div className={`w-full h-full max-w-[1200px] mx-auto px-4 md:px-12 flex flex-col justify-center overflow-y-auto md:overflow-hidden py-12 md:py-0 ${className}`}>
       {children}
     </div>
   );

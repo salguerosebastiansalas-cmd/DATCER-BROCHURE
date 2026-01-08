@@ -6,46 +6,45 @@ const Process: React.FC = () => {
     { 
       num: "01", 
       title: "Assessment", 
-      text: "Evaluamos la viabilidad del sitio y riesgos físicos. Definimos los requerimientos de Tier/Clase." 
+      text: "Evaluamos viabilidad y riesgos. Definimos Tier/Clase." 
     },
     { 
       num: "02", 
-      title: "Ingeniería Conceptual", 
-      text: "Diseño preliminar (Layouts, Topología Eléctrica/Mecánica) y estimación de CAPEX." 
+      title: "Conceptual", 
+      text: "Diseño preliminar (Layouts, Topología) y CAPEX." 
     },
     { 
       num: "03", 
-      title: "Ingeniería de Detalle", 
-      text: "Desarrollo de planos constructivos, memorias, y especificaciones técnicas para licitación." 
+      title: "Detalle", 
+      text: "Planos constructivos y especificaciones técnicas." 
     },
     { 
       num: "04", 
       title: "Commissioning", 
-      text: "Validación rigurosa de que la infraestructura soporta la carga crítica bajo falla." 
+      text: "Validación de infraestructura bajo falla." 
     },
   ];
 
   return (
     <PageWrapper>
-      <div className="mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight text-center">Workflow de Proyecto.</h2>
-        <p className="text-ios-gray text-center mt-4 text-lg">De la idea a la operación certificada.</p>
+      <div className="mb-10 md:mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight text-center">Workflow.</h2>
+        <p className="text-ios-gray text-center mt-2 text-base md:text-lg">De la idea a la operación.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 px-4">
         {steps.map((step, index) => (
-          <div key={index} className="relative group h-full">
-            {/* Connector Line (Desktop) */}
+          <div key={index} className="relative group">
             {index < steps.length - 1 && (
               <div className="hidden md:block absolute top-8 left-1/2 w-full h-[1px] bg-white/10 z-0"></div>
             )}
             
-            <div className="h-full relative z-10 flex flex-col items-center text-center p-6 rounded-3xl bg-ios-dark border border-white/5 transition-all duration-300 hover:border-brand-orange/50 hover:shadow-2xl hover:shadow-brand-orange/10">
-              <div className="w-16 h-16 rounded-full bg-ios-black border border-white/10 flex items-center justify-center text-lg font-bold text-white mb-6 shadow-lg group-hover:text-brand-orange group-hover:border-brand-orange transition-colors">
+            <div className="h-full relative z-10 flex flex-col items-center text-center p-5 md:p-6 rounded-2xl md:rounded-3xl bg-ios-dark border border-white/5 transition-all duration-300 hover:border-brand-orange/50">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-ios-black border border-white/10 flex items-center justify-center text-base md:text-lg font-bold text-white mb-4 shadow-lg group-hover:text-brand-orange transition-colors">
                 {step.num}
               </div>
-              <h3 className="text-lg font-bold text-white mb-4">{step.title}</h3>
-              <p className="text-sm text-ios-gray font-normal leading-relaxed">{step.text}</p>
+              <h3 className="text-base md:text-lg font-bold text-white mb-2 md:mb-4">{step.title}</h3>
+              <p className="text-xs md:text-sm text-ios-gray leading-relaxed">{step.text}</p>
             </div>
           </div>
         ))}
