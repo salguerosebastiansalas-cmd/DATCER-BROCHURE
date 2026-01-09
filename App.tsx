@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Grid, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Grid, X, Sun, Moon, Languages } from 'lucide-react';
 import Cover from './components/pages/Cover';
 import About from './components/pages/About';
 import Services from './components/pages/Services';
@@ -8,18 +8,23 @@ import Process from './components/pages/Process';
 import WhyUs from './components/pages/WhyUs';
 import Contact from './components/pages/Contact';
 
+export type Language = 'es' | 'en';
+export type Theme = 'dark' | 'light';
+
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [showOverview, setShowOverview] = useState(false);
+  const [lang, setLang] = useState<Language>('es');
+  const [theme, setTheme] = useState<Theme>('dark');
   
   const pages = [
-    { component: <Cover />, title: "PORTADA", subtitle: "Infraestructura Crítica" },
-    { component: <About />, title: "NOSOTROS", subtitle: "Misión y Filosofía" },
-    { component: <Services />, title: "SERVICIOS", subtitle: "Ingeniería de Precisión" },
-    { component: <IntegratedServices />, title: "INTEGRACIÓN", subtitle: "Servicios Complementarios" },
-    { component: <Process />, title: "PROCESO", subtitle: "Metodología Operativa" },
-    { component: <WhyUs />, title: "MÉTRICAS", subtitle: "Dashboard de Eficiencia" },
-    { component: <Contact />, title: "CONTACTO", subtitle: "Consulta Global" },
+    { component: <Cover lang={lang} />, title: lang === 'es' ? "PORTADA" : "COVER", subtitle: lang === 'es' ? "Infraestructura Crítica" : "Critical Infrastructure" },
+    { component: <About lang={lang} />, title: lang === 'es' ? "NOSOTROS" : "ABOUT", subtitle: lang === 'es' ? "Misión y Filosofía" : "Mission & Philosophy" },
+    { component: <Services lang={lang} />, title: lang === 'es' ? "SERVICIOS" : "SERVICES", subtitle: lang === 'es' ? "Ingeniería de Precisión" : "Precision Engineering" },
+    { component: <IntegratedServices lang={lang} />, title: lang === 'es' ? "INTEGRACIÓN" : "INTEGRATION", subtitle: lang === 'es' ? "Servicios Complementarios" : "Integrated Services" },
+    { component: <Process lang={lang} />, title: lang === 'es' ? "PROCESO" : "PROCESS", subtitle: lang === 'es' ? "Metodología Operativa" : "Operational Methodology" },
+    { component: <WhyUs lang={lang} />, title: lang === 'es' ? "MÉTRICAS" : "METRICS", subtitle: lang === 'es' ? "Dashboard de Eficiencia" : "Efficiency Dashboard" },
+    { component: <Contact lang={lang} />, title: lang === 'es' ? "CONTACTO" : "CONTACT", subtitle: lang === 'es' ? "Consulta Global" : "Global Inquiry" },
   ];
 
   const totalPages = pages.length;
@@ -32,7 +37,7 @@ const App: React.FC = () => {
   }, [totalPages]);
 
   const handleScroll = useCallback((e: WheelEvent) => {
-    if (Math.abs(e.deltaY) < 40) return;
+    if (Math.abs(e.deltaY) < 30) return;
     if (e.deltaY > 0) navigate('next');
     else navigate('prev');
   }, [navigate]);
@@ -41,7 +46,7 @@ const App: React.FC = () => {
     let timeoutId: ReturnType<typeof setTimeout>;
     const onWheel = (e: WheelEvent) => {
       clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => handleScroll(e), 80);
+      timeoutId = setTimeout(() => handleScroll(e), 50);
     };
     window.addEventListener('wheel', onWheel, { passive: true });
     return () => window.removeEventListener('wheel', onWheel);
@@ -58,20 +63,39 @@ const App: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-apple-black text-white font-sans selection:bg-brand-orange/30">
+    <div className={`relative h-screen w-screen overflow-hidden font-sans transition-all duration-1000 ease-in-out ${theme === 'dark' ? 'theme-dark bg-[#000000] text-[#f5f5f7]' : 'theme-light bg-[#f5f5f7] text-[#1d1d1f]'}`}>
       
-      {/* FONDO TÉCNICO APPLE PRO */}
+      {/* ATMÓSFERA DE FONDO - OPACIDADES REDUCIDAS PARA UN LOOK MÁS LIMPIO */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 tech-grid opacity-20"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,_rgba(40,40,40,0.15)_0%,_rgba(0,0,0,1)_100%)]"></div>
-        <div className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-brand-orange/5 blur-[160px] rounded-full opacity-40"></div>
-        <div className="absolute -bottom-[10%] -left-[10%] w-[600px] h-[600px] bg-brand-orange/[0.03] blur-[120px] rounded-full"></div>
+        <div className={`absolute top-[-10%] left-[-5%] w-[70vw] h-[70vw] rounded-full transition-all duration-1000 ${theme === 'dark' ? 'bg-brand-orange/[0.04] blur-[140px]' : 'bg-brand-orange/[0.02] blur-[120px]'}`}></div>
+        <div className={`absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full transition-all duration-1000 ${theme === 'dark' ? 'bg-white/[0.015] blur-[160px]' : 'bg-brand-orange/[0.01] blur-[150px]'}`}></div>
+        
+        {/* Viñeta sutil mejorada */}
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${theme === 'dark' ? 'bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]' : 'bg-transparent'}`}></div>
       </div>
 
-      {/* Main Content */}
+      {/* CONTROLES SUPERIORES */}
+      <div className="fixed top-8 right-8 z-[100] flex items-center gap-3">
+        <button 
+          onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
+          className={`nav-capsule p-3 rounded-full transition-all duration-500 border hover:scale-110 active:scale-95 flex items-center justify-center ${theme === 'dark' ? 'text-white border-white/10 bg-white/5' : 'text-black border-black/10 bg-white/80 shadow-sm'}`}
+        >
+          {theme === 'dark' ? <Sun size={18} strokeWidth={2} /> : <Moon size={18} strokeWidth={2} />}
+        </button>
+        
+        <button 
+          onClick={() => setLang(prev => prev === 'es' ? 'en' : 'es')}
+          className={`nav-capsule px-5 py-3 rounded-full text-[11px] font-bold tracking-[0.2em] transition-all duration-500 border hover:scale-105 active:scale-95 flex items-center gap-2 ${theme === 'dark' ? 'text-white border-white/10 bg-white/5' : 'text-black border-black/5 bg-white/80 shadow-sm'}`}
+        >
+          <Languages size={14} />
+          {lang.toUpperCase()}
+        </button>
+      </div>
+
+      {/* Contenido Principal */}
       <main className="h-full w-full relative z-10">
         <div 
-          className="flex h-full transition-transform duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1)"
+          className="flex h-full transition-transform duration-[1100ms] ease-[cubic-bezier(0.23,1,0.32,1)]"
           style={{ 
             width: `${totalPages * 100}%`,
             transform: `translateX(-${(currentPage * 100) / totalPages}%)` 
@@ -83,7 +107,7 @@ const App: React.FC = () => {
               className="w-full h-full flex-shrink-0 flex items-center justify-center"
               style={{ width: `${100 / totalPages}%` }}
             >
-               <div className={`w-full h-full transition-all duration-1000 ${currentPage === index ? 'opacity-100 blur-0' : 'opacity-0 blur-md translate-y-4'}`}>
+               <div className={`w-full h-full transition-all duration-1000 ${currentPage === index ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98] blur-sm'}`}>
                  {page.component}
                </div>
             </section>
@@ -91,64 +115,54 @@ const App: React.FC = () => {
         </div>
       </main>
 
-      {/* INDICADOR DE SCROLL */}
-      <div className={`fixed bottom-28 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 transition-opacity duration-1000 ${currentPage === 0 ? 'opacity-40' : 'opacity-0'}`}>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-brand-orange animate-scroll-dot shadow-[0_0_10px_#F26722]"></div>
-        </div>
-      </div>
-
-      {/* NAVEGACIÓN CORPORATIVA APPLE STYLE */}
-      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[650px]">
-        <div className="nav-capsule rounded-full px-4 md:px-7 py-3.5 flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      {/* NAVEGACIÓN INFERIOR */}
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-[620px]">
+        <div className={`nav-capsule rounded-full px-6 py-4 flex items-center justify-between border transition-all duration-700 ${theme === 'dark' ? 'bg-[#111]/80 border-white/15 shadow-2xl shadow-black/40' : 'bg-white/90 border-black/10 shadow-xl shadow-black/5'}`}>
           
-          <div className="flex items-center gap-5 pr-6 border-r border-white/10 overflow-hidden min-w-0">
-            <div className="text-base font-logo italic font-bold tracking-tight select-none shrink-0">
-              <span style={{ color: '#F26722' }}>DAT</span>
-              <span style={{ color: '#636466' }}>CER</span>
+          <div className="flex items-center gap-5 pr-6 border-r border-current/10 min-w-0">
+            <div className="text-sm font-logo italic font-bold tracking-tighter shrink-0 select-none">
+              <span className="text-brand-orange">DAT</span>
+              <span className={theme === 'dark' ? 'text-[#86868b]' : 'text-[#222]'}>CER</span>
             </div>
             
-            <div className="flex flex-col border-l border-white/10 pl-5 min-w-0">
-              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.25em] leading-none mb-1.5 truncate">
+            <div className="hidden sm:flex flex-col min-w-0">
+              <span className="text-[10px] font-bold text-brand-orange uppercase tracking-[0.2em] leading-none mb-1 truncate">
                 {pages[currentPage].title}
               </span>
-              <span className="text-[12px] font-medium text-apple-muted whitespace-nowrap overflow-hidden text-ellipsis max-w-[200px]">
+              <span className={`text-[12px] font-medium whitespace-nowrap overflow-hidden text-ellipsis max-w-[140px] opacity-50`}>
                 {pages[currentPage].subtitle}
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 md:gap-5 shrink-0 ml-4">
-            <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="flex items-center gap-2">
               <button 
                 onClick={() => navigate('prev')}
                 disabled={currentPage === 0}
-                className="p-1.5 rounded-full hover:bg-white/10 disabled:opacity-10 transition-colors text-white"
-                aria-label="Anterior"
+                className={`p-1.5 rounded-full disabled:opacity-5 transition-all ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={20} strokeWidth={1.5} />
               </button>
               
-              <div className="text-[11px] font-bold text-apple-muted w-12 text-center tabular-nums tracking-tighter">
-                <span className="text-white">{currentPage + 1}</span> / {totalPages}
+              <div className="text-[11px] font-bold w-12 text-center tabular-nums opacity-70">
+                <span className={theme === 'dark' ? 'text-white' : 'text-black'}>{currentPage + 1}</span> / {totalPages}
               </div>
 
               <button 
                 onClick={() => navigate('next')}
                 disabled={currentPage === totalPages - 1}
-                className="p-1.5 rounded-full hover:bg-white/10 disabled:opacity-10 transition-colors text-white"
-                aria-label="Siguiente"
+                className={`p-1.5 rounded-full disabled:opacity-5 transition-all ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={20} strokeWidth={1.5} />
               </button>
             </div>
 
-            <div className="h-5 w-[1px] bg-white/10"></div>
+            <div className="h-4 w-[1px] bg-current/10"></div>
 
             <button 
               onClick={() => setShowOverview(true)}
-              className="p-2 rounded-full text-apple-muted hover:text-white hover:bg-white/5 transition-all"
-              aria-label="Menú"
+              className={`p-1.5 rounded-full opacity-60 hover:opacity-100 transition-all ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-black/5'}`}
             >
               <Grid size={18} />
             </button>
@@ -156,16 +170,20 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* GRID SELECTOR */}
-      <div className={`fixed inset-0 z-[60] bg-black/95 backdrop-blur-3xl transition-all duration-700 flex flex-col items-center justify-center ${showOverview ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <button onClick={() => setShowOverview(false)} className="absolute top-10 right-10 p-3 rounded-full hover:bg-white/5 transition-colors">
-          <X size={24} strokeWidth={1} />
+      {/* OVERVIEW GRID */}
+      <div className={`fixed inset-0 z-[150] backdrop-blur-3xl transition-all duration-700 flex flex-col items-center justify-center ${showOverview ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} ${theme === 'dark' ? 'bg-black/95' : 'bg-white/95'}`}>
+        <button onClick={() => setShowOverview(false)} className={`absolute top-10 right-10 p-5 rounded-full transition-colors ${theme === 'dark' ? 'hover:bg-white/5 text-white' : 'hover:bg-black/5 text-black'}`}>
+          <X size={32} strokeWidth={1} />
         </button>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl w-full px-10">
           {pages.map((page, index) => (
-            <button key={index} onClick={() => { setCurrentPage(index); setShowOverview(false); }} className={`group text-left p-8 rounded-3xl border transition-all duration-500 ${currentPage === index ? 'bg-white/10 border-brand-orange shadow-[0_20px_60px_rgba(0,0,0,0.6)]' : 'bg-white/[0.02] border-white/5 hover:bg-white/[0.05] hover:border-white/20'}`}>
-              <span className={`text-[10px] font-bold mb-3 block uppercase tracking-widest ${currentPage === index ? 'text-brand-orange' : 'text-apple-muted'}`}>Section 0{index + 1}</span>
-              <h3 className="text-xl font-medium text-white tracking-tight">{page.title}</h3>
+            <button 
+              key={index} 
+              onClick={() => { setCurrentPage(index); setShowOverview(false); }} 
+              className={`group text-left p-8 rounded-[2.5rem] border transition-all duration-500 ${currentPage === index ? 'bg-brand-orange border-brand-orange shadow-2xl shadow-brand-orange/30 scale-[1.03]' : (theme === 'dark' ? 'bg-white/[0.05] border-white/10 hover:bg-white/[0.1]' : 'bg-black/[0.03] border-black/5 hover:bg-black/[0.06]')}`}
+            >
+              <span className={`text-[10px] font-bold mb-3 block uppercase tracking-widest ${currentPage === index ? 'text-white' : 'text-brand-orange'}`}>0{index + 1}</span>
+              <h3 className={`text-xl font-medium tracking-tight ${currentPage === index ? 'text-white' : (theme === 'dark' ? 'text-white' : 'text-black')}`}>{page.title}</h3>
             </button>
           ))}
         </div>
