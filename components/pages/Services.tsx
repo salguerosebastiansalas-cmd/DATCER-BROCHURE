@@ -1,28 +1,28 @@
 import React from 'react';
 import PageWrapper from '../layout/PageWrapper';
-import { FileText, Award, Server, Activity } from 'lucide-react';
+import { FileText, Award, ShieldCheck, Activity } from 'lucide-react';
 
 const Services: React.FC = () => {
   const services = [
     {
       icon: FileText,
       title: "Diseño & Ingeniería",
-      desc: "Carpeta técnica de precisión para construcción de misión crítica bajo estándares Tier."
+      desc: "Carpeta técnica de precisión para construcción de misión crítica bajo estándares Tier e ICREA."
     },
     {
       icon: Award,
       title: "Certificaciones",
-      desc: "Gestión experta y acompañamiento ante Uptime Institute e ICREA WCQA."
+      desc: "Gestión experta y acompañamiento técnico ante Uptime Institute y WCQA."
     },
     {
-      icon: Server,
-      title: "Simulación CFD",
-      desc: "Modelado predictivo de dinámica de fluidos para optimización térmica avanzada."
+      icon: ShieldCheck,
+      title: "Consultoría Estratégica",
+      desc: "Análisis de riesgos, estudios de carga y optimización de infraestructura existente."
     },
     {
       icon: Activity,
       title: "Commissioning",
-      desc: "Protocolos de validación integral (FAT/SAT/IST) simulando escenarios extremos."
+      desc: "Protocolos de validación integral (FAT/SAT/IST) simulando escenarios de falla extremos."
     }
   ];
 
