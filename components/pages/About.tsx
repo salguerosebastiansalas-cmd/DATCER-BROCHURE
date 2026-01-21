@@ -33,8 +33,18 @@ const About: React.FC<{ lang: Language }> = ({ lang }) => {
   const t = content[lang];
 
   return (
-    <PageWrapper>
-      <div className="max-w-6xl mx-auto px-6">
+    <PageWrapper className="relative overflow-hidden">
+      {/* Background Decor - Concentric Ecosystem Circles */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-full pointer-events-none opacity-[0.02] dark:opacity-[0.04] scale-150">
+        <svg width="100%" height="100%" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="400" cy="400" r="100" stroke="currentColor" strokeWidth="0.5" />
+          <circle cx="400" cy="400" r="200" stroke="currentColor" strokeWidth="0.5" />
+          <circle cx="400" cy="400" r="300" stroke="currentColor" strokeWidth="0.5" />
+          <circle cx="400" cy="400" r="400" stroke="currentColor" strokeWidth="0.5" />
+        </svg>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 items-stretch">
           
           <div className="glass-card p-10 md:p-14 rounded-[3rem] flex flex-col justify-center">

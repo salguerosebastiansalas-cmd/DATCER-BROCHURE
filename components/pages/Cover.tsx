@@ -21,7 +21,22 @@ const Cover: React.FC<{ lang: Language }> = ({ lang }) => {
   const t = content[lang];
 
   return (
-    <PageWrapper className="items-center text-center">
+    <PageWrapper className="items-center text-center overflow-hidden relative">
+      {/* Background Decor - Abstract Mesh */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03] dark:opacity-[0.05]">
+        <svg width="100%" height="100%" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+              <stop offset="0%" style={{ stopColor: 'currentColor', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: 'currentColor', stopOpacity: 0 }} />
+            </radialGradient>
+          </defs>
+          <path d="M0,500 Q250,0 500,500 T1000,500" fill="none" stroke="currentColor" strokeWidth="0.5" />
+          <path d="M0,400 Q250,900 500,400 T1000,400" fill="none" stroke="currentColor" strokeWidth="0.5" />
+          <circle cx="500" cy="500" r="300" fill="none" stroke="currentColor" strokeWidth="0.2" strokeDasharray="10,10" />
+        </svg>
+      </div>
+
       <div className="relative z-10 w-full animate-blur-in">
         <div className="mb-14">
           <span className="text-[11px] font-bold uppercase tracking-[0.5em] opacity-50">

@@ -1,9 +1,9 @@
 import React from 'react';
 import PageWrapper from '../layout/PageWrapper';
 import { Zap, Thermometer, ShieldCheck, Flame, Network, MonitorDot, HardHat, BatteryCharging } from 'lucide-react';
-import { Language } from '../../App';
+import { Language, DetailItem } from '../../App';
 
-const IntegratedServices: React.FC<{ lang: Language }> = ({ lang }) => {
+const IntegratedServices: React.FC<{ lang: Language, onOpenDetail: (item: DetailItem) => void }> = ({ lang, onOpenDetail }) => {
   const content = {
     es: {
       title: "Ecosistema",
@@ -55,7 +55,8 @@ const IntegratedServices: React.FC<{ lang: Language }> = ({ lang }) => {
           {t.items.map((s, i) => (
             <div 
               key={i}
-              className="glass-card p-5 md:p-7 rounded-[1.5rem] md:rounded-[2rem] hover:border-brand-orange/40 transition-all group flex flex-col h-full shadow-sm"
+              onClick={() => onOpenDetail(s)}
+              className="glass-card p-5 md:p-7 rounded-[1.5rem] md:rounded-[2rem] hover:border-brand-orange/40 transition-all group flex flex-col h-full shadow-sm cursor-pointer"
             >
               <div className="mb-4 text-brand-orange/90 group-hover:text-brand-orange transition-colors">
                 <s.icon size={20} strokeWidth={2} />

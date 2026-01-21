@@ -1,8 +1,9 @@
 import React from 'react';
 import PageWrapper from '../layout/PageWrapper';
-import { Language } from '../../App';
+import { Language, DetailItem } from '../../App';
+import { Settings } from 'lucide-react';
 
-const Process: React.FC<{ lang: Language }> = ({ lang }) => {
+const Process: React.FC<{ lang: Language, onOpenDetail: (item: DetailItem) => void }> = ({ lang, onOpenDetail }) => {
   const content = {
     es: {
       title: "Metodología",
@@ -49,16 +50,16 @@ const Process: React.FC<{ lang: Language }> = ({ lang }) => {
                 </linearGradient>
               </defs>
               <line x1="0" y1="20" x2="1000" y2="20" stroke="url(#lineGrad)" strokeWidth="1" strokeDasharray="4,4" />
-              <circle cx="250" cy="20" r="3" fill="#F26722" className="animate-pulse" />
-              <circle cx="500" cy="20" r="3" fill="#F26722" className="animate-pulse" style={{ animationDelay: '1s' }} />
-              <circle cx="750" cy="20" r="3" fill="#F26722" className="animate-pulse" style={{ animationDelay: '2s' }} />
             </svg>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4 relative z-10">
             {t.steps.map((step, index) => (
               <div key={index} className="relative">
-                <div className="glass-card h-full p-8 rounded-[2.5rem] flex flex-col border-white/[0.05] hover:border-brand-orange/40 transition-all duration-700 group cursor-default bg-current/[0.01]">
+                <div 
+                  onClick={() => onOpenDetail({ title: step.title, desc: step.text, icon: Settings, tag: `FASE ${step.num}` })}
+                  className="glass-card h-full p-8 rounded-[2.5rem] flex flex-col border-white/[0.05] hover:border-brand-orange/40 transition-all duration-700 group cursor-pointer bg-current/[0.01]"
+                >
                   <div className="flex justify-between items-start mb-10">
                     <div className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-brand-orange shadow-[0_0_10px_#F26722]"></div>
