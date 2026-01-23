@@ -8,31 +8,31 @@ const IntegratedServices: React.FC<{ lang: Language, onOpenDetail: (item: Detail
     es: {
       title: "Ecosistema",
       subtitle: "Integrado.",
-      desc: "Nuestros diseños abarcan todas las disciplinas técnicas necesarias para garantizar una operación de misión crítica ininterrumpida.",
+      desc: "Diseños que abarcan todas las disciplinas técnicas para garantizar una operación ininterrumpida.",
       items: [
-        { icon: Zap, title: "Ingeniería Eléctrica", desc: "Media y baja tensión, coordinación de protecciones y estudios de arco eléctrico." },
-        { icon: Thermometer, title: "Climatización (HVAC)", desc: "Refrigeración de precisión, pasillos fríos/calientes y gestión de flujo de aire." },
-        { icon: BatteryCharging, title: "Backup de Energía", desc: "Sistemas UPS, bancos de baterías y plantas eléctricas de emergencia." },
-        { icon: Flame, title: "Seguridad Contra Incendio", desc: "Detección temprana (VESDA) y sistemas de extinción por agentes limpios." },
-        { icon: Network, title: "Conectividad & Fibra", desc: "Redes SAN/LAN de alta velocidad y gestión de infraestructura de cableado." },
-        { icon: ShieldCheck, title: "Seguridad Física", desc: "CCTV inteligente, biometría y control de acceso perimetral automatizado." },
-        { icon: MonitorDot, title: "BMS & DCIM", desc: "Monitoreo integral de infraestructura y gestión de activos en tiempo real." },
-        { icon: HardHat, title: "Obra Civil", desc: "Reforzamiento estructural, pisos técnicos y blindaje de salas de datos." }
+        { icon: Zap, title: "Eléctrica", desc: "Media y baja tensión, coordinación protecciones, calidad energía." },
+        { icon: Thermometer, title: "Climatización", desc: "Refrigeración de precisión, confinamiento pasillos, CFD." },
+        { icon: BatteryCharging, title: "Respaldo", desc: "UPS modulares, baterías Li-Ion/VRLA, generadores." },
+        { icon: Flame, title: "Incendios", desc: "Detección temprana (VESDA) y supresión agentes limpios." },
+        { icon: Network, title: "Conectividad", desc: "Cableado estructurado, fibra óptica, soluciones MPO." },
+        { icon: ShieldCheck, title: "Seguridad", desc: "Control acceso biométrico, CCTV analítica, blindaje." },
+        { icon: MonitorDot, title: "BMS & DCIM", desc: "Monitoreo ambiental/eléctrico y gestión activos TI." },
+        { icon: HardHat, title: "Civil", desc: "Pisos técnicos, reforzamiento estructural, arquitectura." }
       ]
     },
     en: {
       title: "Integrated",
       subtitle: "Ecosystem.",
-      desc: "Our designs encompass all technical disciplines necessary to guarantee uninterrupted mission-critical operation.",
+      desc: "Designs encompassing all technical disciplines to ensure uninterrupted operation.",
       items: [
-        { icon: Zap, title: "Electrical Engineering", desc: "Medium and low voltage, protection coordination, and arc flash studies." },
-        { icon: Thermometer, title: "HVAC & Cooling", desc: "Precision cooling, hot/cold aisles, and airflow management." },
-        { icon: BatteryCharging, title: "Power Backup", desc: "UPS systems, battery banks, and emergency power plants." },
-        { icon: Flame, title: "Fire Safety", desc: "Early detection (VESDA) and clean agent suppression systems." },
-        { icon: Network, title: "Connectivity & Fiber", desc: "High-speed SAN/LAN networks and structured cabling management." },
-        { icon: ShieldCheck, title: "Physical Security", desc: "Intelligent CCTV, biometrics, and automated perimeter access control." },
-        { icon: MonitorDot, title: "BMS & DCIM", desc: "Integral infrastructure monitoring and real-time asset management." },
-        { icon: HardHat, title: "Civil Works", desc: "Structural reinforcement, raised floors, and data hall shielding." }
+        { icon: Zap, title: "Electrical", desc: "Medium/low voltage, protection coordination, power quality." },
+        { icon: Thermometer, title: "Cooling", desc: "Precision cooling, aisle containment, CFD analysis." },
+        { icon: BatteryCharging, title: "Backup", desc: "Modular UPS, Li-Ion/VRLA batteries, generators." },
+        { icon: Flame, title: "Fire Safety", desc: "Early detection (VESDA) and clean agent suppression." },
+        { icon: Network, title: "Connectivity", desc: "Structured cabling, optical fiber, MPO solutions." },
+        { icon: ShieldCheck, title: "Security", desc: "Biometric access, analytics CCTV, physical shielding." },
+        { icon: MonitorDot, title: "BMS & DCIM", desc: "Environmental/power monitoring and IT asset mgmt." },
+        { icon: HardHat, title: "Civil Works", desc: "Raised floors, structural reinforcement, architecture." }
       ]
     }
   };
@@ -41,28 +41,31 @@ const IntegratedServices: React.FC<{ lang: Language, onOpenDetail: (item: Detail
 
   return (
     <PageWrapper>
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="mb-8 md:mb-10">
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-3">
-            {t.title} <span className="text-brand-orange">{t.subtitle}</span>
-          </h2>
-          <p className="opacity-80 text-base md:text-lg font-light max-w-2xl leading-snug">
-            {t.desc}
-          </p>
+      <div className="h-full flex flex-col justify-center py-10">
+        <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 px-2">
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tighter mb-3">
+              {t.title} <span className="text-brand-orange">{t.subtitle}</span>
+            </h2>
+            <p className="opacity-70 text-lg font-light leading-snug">
+              {t.desc}
+            </p>
+          </div>
+          <div className="hidden md:block h-[1px] w-24 bg-current opacity-20 mb-6"></div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 pb-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {t.items.map((s, i) => (
             <div 
               key={i}
               onClick={() => onOpenDetail(s)}
-              className="glass-card p-5 md:p-7 rounded-[1.5rem] md:rounded-[2rem] hover:border-brand-orange/40 transition-all group flex flex-col h-full shadow-sm cursor-pointer"
+              className="glass-card p-6 rounded-[2rem] hover:scale-[1.03] hover:shadow-lg transition-all duration-300 group flex flex-col h-full cursor-pointer min-h-[180px]"
             >
-              <div className="mb-4 text-brand-orange/90 group-hover:text-brand-orange transition-colors">
-                <s.icon size={20} strokeWidth={2} />
+              <div className="mb-5 text-brand-orange opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all origin-left">
+                <s.icon size={28} strokeWidth={1.5} />
               </div>
-              <h3 className="text-xs md:text-sm font-bold mb-2 tracking-tight leading-tight">{s.title}</h3>
-              <p className="opacity-70 text-[10px] md:text-xs leading-relaxed font-light mt-auto">
+              <h3 className="text-base font-bold mb-2 tracking-tight">{s.title}</h3>
+              <p className="opacity-50 text-xs leading-relaxed font-medium mt-auto">
                 {s.desc}
               </p>
             </div>

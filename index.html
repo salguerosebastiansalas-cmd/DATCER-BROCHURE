@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DATCER | Precision Engineering</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23F26722%22/><text y=%22.9em%22 x=%2250%25%22 font-size=%2270%22 font-weight=%22bold%22 font-family=%22sans-serif%22 dy=%22.1em%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22white%22>D</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&family=Encode+Sans+Expanded:wght@700;800&display=swap" rel="stylesheet">
     <script>
@@ -15,12 +16,6 @@
               logo: ['"Swis721 Ex BT"', '"Encode Sans Expanded"', 'Inter', 'sans-serif'],
             },
             colors: {
-              apple: {
-                black: '#000000',
-                gray: '#1c1c1e',
-                light: '#fbfbfd',
-                muted: '#86868b',
-              },
               brand: {
                 orange: '#F26722',
                 grey: '#636466',
@@ -30,7 +25,8 @@
               'fade-in': 'fadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               'scroll-dot': 'scrollDot 2.5s ease-in-out infinite',
               'blur-in': 'blurIn 1.5s ease-out forwards',
-              'float': 'float 6s ease-in-out infinite',
+              'float': 'float 8s ease-in-out infinite',
+              'hover-float': 'hoverFloat 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
             },
             keyframes: {
               fadeIn: {
@@ -45,11 +41,8 @@
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-10px)' },
               },
-              scrollDot: {
-                '0%': { opacity: '0', transform: 'translateY(-6px)' },
-                '30%': { opacity: '1' },
-                '70%': { opacity: '1' },
-                '100%': { opacity: '0', transform: 'translateY(10px)' },
+              hoverFloat: {
+                '100%': { transform: 'translateY(-8px) scale(1.01)' },
               }
             }
           }
@@ -65,32 +58,59 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Estilos para las tarjetas (paletas) con soporte para temas */
+      /* PLATFORM STYLE - APPLE AESTHETIC REFINED */
       .glass-card {
-        backdrop-filter: blur(40px) saturate(180%);
-        -webkit-backdrop-filter: blur(40px) saturate(180%);
-        transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(50px) saturate(180%);
+        -webkit-backdrop-filter: blur(50px) saturate(180%);
+        transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        position: relative;
+        overflow: hidden;
       }
 
-      /* Estilo para el Modo Oscuro */
+      /* Efecto de brillo superior para simular borde cortado con luz cenital */
+      .glass-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, 
+          rgba(255,255,255,0) 0%, 
+          rgba(255,255,255,0.6) 50%, 
+          rgba(255,255,255,0) 100%);
+        opacity: 0.8;
+        z-index: 10;
+      }
+
+      /* DARK MODE PLATFORM - Physical "Floating Slab" Look */
       .theme-dark .glass-card {
-        background: rgba(255, 255, 255, 0.03);
+        background: linear-gradient(180deg, rgba(30,30,35,0.85) 0%, rgba(20,20,25,0.6) 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+          0 20px 40px -10px rgba(0,0,0,0.6), /* Deep ambient shadow */
+          0 0 0 1px rgba(0,0,0,1), /* Black rim for contrast */
+          inset 0 1px 0 rgba(255,255,255,0.15); /* Inner highlight */
       }
 
-      /* Estilo para el Modo Claro - VISIBILIDAD MÁXIMA */
+      /* LIGHT MODE PLATFORM - "Frosted Glass Block" Look */
       .theme-light .glass-card {
-        background: rgba(255, 255, 255, 0.85); /* Mucho más sólido para destacar */
-        border: 1px solid rgba(0, 0, 0, 0.1); /* Borde más visible */
-        box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.12); /* Sombra más amplia y profunda */
+        background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 
+          0 20px 40px -12px rgba(0,0,0,0.15),
+          0 0 0 1px rgba(0,0,0,0.03),
+          inset 0 1px 0 rgba(255,255,255,0.8);
       }
 
       .nav-capsule {
-        backdrop-filter: blur(50px) saturate(200%);
-        -webkit-backdrop-filter: blur(50px) saturate(200%);
-        box-shadow: 0 10px 40px -15px rgba(0,0,0,0.2);
+        backdrop-filter: blur(40px) saturate(180%);
+        -webkit-backdrop-filter: blur(40px) saturate(180%);
+        box-shadow: 0 15px 35px -10px rgba(0,0,0,0.3);
       }
+      
       ::selection {
         background-color: #F26722;
         color: white;
