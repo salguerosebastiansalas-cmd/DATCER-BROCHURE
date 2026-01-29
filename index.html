@@ -56,15 +56,28 @@
         overflow: hidden;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
       }
 
       /* PLATFORM STYLE - APPLE AESTHETIC REFINED */
       .glass-card {
-        backdrop-filter: blur(50px) saturate(180%);
-        -webkit-backdrop-filter: blur(50px) saturate(180%);
+        backdrop-filter: blur(60px) saturate(180%);
+        -webkit-backdrop-filter: blur(60px) saturate(180%);
         transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         position: relative;
         overflow: hidden;
+      }
+      
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 50;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
       }
 
       /* Efecto de brillo superior para simular borde cortado con luz cenital */
@@ -77,38 +90,45 @@
         height: 1px;
         background: linear-gradient(90deg, 
           rgba(255,255,255,0) 0%, 
-          rgba(255,255,255,0.6) 50%, 
+          rgba(255,255,255,0.4) 50%, 
           rgba(255,255,255,0) 100%);
-        opacity: 0.8;
+        opacity: 0.6;
         z-index: 10;
+        pointer-events: none;
       }
 
       /* DARK MODE PLATFORM - Physical "Floating Slab" Look */
       .theme-dark .glass-card {
-        background: linear-gradient(180deg, rgba(30,30,35,0.85) 0%, rgba(20,20,25,0.6) 100%);
+        background: linear-gradient(180deg, rgba(30,30,35,0.7) 0%, rgba(20,20,25,0.4) 100%);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
         box-shadow: 
-          0 20px 40px -10px rgba(0,0,0,0.6), /* Deep ambient shadow */
-          0 0 0 1px rgba(0,0,0,1), /* Black rim for contrast */
-          inset 0 1px 0 rgba(255,255,255,0.15); /* Inner highlight */
+          0 20px 40px -10px rgba(0,0,0,0.5), /* Deep ambient shadow */
+          0 0 0 1px rgba(0,0,0,0.4), /* Black rim for contrast */
+          inset 0 1px 0 rgba(255,255,255,0.05); /* Inner highlight */
       }
 
       /* LIGHT MODE PLATFORM - "Frosted Glass Block" Look */
       .theme-light .glass-card {
         background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.5) 100%);
-        border: 1px solid rgba(255, 255, 255, 0.6);
-        border-top: 1px solid rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-top: 1px solid rgba(255, 255, 255, 0.8);
         box-shadow: 
-          0 20px 40px -12px rgba(0,0,0,0.15),
-          0 0 0 1px rgba(0,0,0,0.03),
-          inset 0 1px 0 rgba(255,255,255,0.8);
+          0 20px 40px -12px rgba(0,0,0,0.1),
+          0 0 0 1px rgba(0,0,0,0.02),
+          inset 0 1px 0 rgba(255,255,255,0.6);
       }
 
       .nav-capsule {
         backdrop-filter: blur(40px) saturate(180%);
         -webkit-backdrop-filter: blur(40px) saturate(180%);
-        box-shadow: 0 15px 35px -10px rgba(0,0,0,0.3);
+        box-shadow: 0 15px 35px -10px rgba(0,0,0,0.2);
+      }
+      
+      /* Scrollbar Hide */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
       }
       
       ::selection {
@@ -128,6 +148,7 @@
 </script>
 </head>
   <body>
+    <div class="bg-noise"></div>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
